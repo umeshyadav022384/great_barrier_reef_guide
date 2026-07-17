@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Reef Guide - Great Barrier Reef</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="wave">🌊</div>
+            <p>Loading Great Barrier Reef...</p>
+        </div>
+    </div>
+
+    <!-- Background Layer -->
+    <div id="background-layer">
+        <div class="overlay"></div>
+    </div>
+
+    <!-- App Container -->
+    <div id="app">
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">🌊</div>
+                <div>
+                    <h1>Reef Guide</h1>
+                    <span>Great Barrier Reef</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-label">📍 Current Location</div>
+                <div class="info-value" id="location-name">Expedition Dive Boat</div>
+                <div class="status-dot">
+                    <span class="dot"></span>
+                    <span>Exploring</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-label">🎒 Inventory</div>
+                <div class="info-value" id="inventory-text">None</div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="reset-btn" class="action-btn secondary">🔄 Reset</button>
+            </div>
+
+            <div class="sidebar-footer">
+                <span>v1.0</span>
+                <span>Powered by Groq</span>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main id="chat-area">
+            <div id="messages-container">
+                <!-- Messages will be added here by JavaScript -->
+            </div>
+
+            <div id="chips-container">
+                <!-- Chips will be added here by JavaScript -->
+            </div>
+
+            <div id="input-area">
+                <div class="input-wrapper">
+                    <button id="mic-button" class="icon-btn" title="Voice Input">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" y1="19" x2="12" y2="23"/>
+                            <line x1="8" y1="23" x2="16" y2="23"/>
+                        </svg>
+                    </button>
+                    
+                    <input type="text" id="text-input" placeholder="Ask about marine life, locations, or dive safety..." autocomplete="off">
+                    
+                    <button id="send-button" class="icon-btn send-btn" title="Send Message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="input-hint">
+                    <span id="recording-status">🎤 Click mic or press Space to speak</span>
+                    <span class="divider">·</span>
+                    <span>Enter to send</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <audio id="audio-player"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

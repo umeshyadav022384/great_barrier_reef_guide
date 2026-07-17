@@ -1,0 +1,36 @@
+python-dotenv
+openai
+
+# FastAPI
+fastapi
+uvicorn[standard]
+python-multipart
+aiofiles
+
+# RAG & Vector DB
+chromadb==0.4.24
+google-generativeai==0.3.2
+google.ai.generativelanguage==0.4.0
+
+llama-index
+llama-index-embeddings-google-genai
+llama-index-llms-openai-like
+
+# STT
+openai-whisper
+
+# TTS
+gTTS
+
+# PDF (if using PDFs)
+pypdf
+
+# Audio (for testing)
+sounddevice
+soundfile
+
+# Type Safety
+pydantic
+typing-extensions
+google-genai
+

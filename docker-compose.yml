@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: reef-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/data:/app/data
+      - ./frontend/public/audio:/app/frontend/public/audio
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - LLM_PROVIDER=${LLM_PROVIDER:-groq}
+      - LLM_MODEL=${LLM_MODEL:-llama-3.3-70b-versatile}
+      - PORT=${PORT:-8000}
+      - HOST=${HOST:-0.0.0.0}
+      - CHROMA_DB_PATH=${CHROMA_DB_PATH:-./data/chromadb}
+      - AUDIO_OUTPUT_DIR=${AUDIO_OUTPUT_DIR:-./frontend/public/audio}
+    restart: unless-stopped
+    networks:
+      - reef-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: reef-frontend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+    depends_on:
+      - backend
+    networks:
+      - reef-network
+    restart: unless-stopped
+
+networks:
+  reef-network:
+    driver: bridge
